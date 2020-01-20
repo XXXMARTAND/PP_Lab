@@ -4,9 +4,6 @@
 int main(int argc, char *argv[])
 {
 	int rank,size;
-	char op;
-	printf("Enter operator\n");
-	scanf("%c",&op);
 	MPI_Init(&argc,&argv);
     
 	MPI_Comm_size(MPI_COMM_WORLD,&size);
