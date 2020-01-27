@@ -5,10 +5,7 @@
 int main (int argc, char *argv[]) {
 
 	int rank, size;
-	int i = 0, j;
-	int k = 0, fac=1, ans[1000], sum=0;
-	int n, a[100][100], b[100];
-	float x, y, area, pi1;
+	float x, y, area, pi;
 
 	MPI_Init(&argc, &argv);
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -19,10 +16,10 @@ int main (int argc, char *argv[]) {
 	y = 4.f/(1+x*x);
 	area = (1/(float)size)*y;
 
-	MPI_Reduce(&area, &pi1, 1, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
+	MPI_Reduce(&area, &pi, 1, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		fprintf(stdout, "%f", pi1);
+		fprintf(stdout, "value of Pi is %f", pi);
 		fflush(stdout);
 	}
 	
