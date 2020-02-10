@@ -29,7 +29,7 @@ int main (int argc, char  *argv[]) {
 	} 
 
 	MPI_Scatter(arr, 1, MPI_LONG, &rec, 1, MPI_LONG, 0, MPI_COMM_WORLD);
-	printf("Process %d,   %ld\n", rank, rec);
+printf("Process %d, %ld\n", rank, rec);
 	fact = 1;
 	for (i = 2; i <= rec; ++i) {
 		fact *= i;

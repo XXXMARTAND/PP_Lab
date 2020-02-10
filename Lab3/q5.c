@@ -13,7 +13,7 @@ return a;
 int main(int argc, char *argv[])
 {
 	int rank,size,n,m1=0,m2=0,b[10],c;
-	int str1[50], a[10],test[20];
+	int str1[50], a[10], test[20];
 	MPI_Init(&argc,&argv);
     
 	MPI_Comm_size(MPI_COMM_WORLD,&size);
@@ -47,18 +47,22 @@ int main(int argc, char *argv[])
 
 	if (rank==0)
 	{
+		int n1=0,n2=0;
 		fprintf(stdout, "The result gathered in root\n");
 		fflush(stdout);
 		for (int i = 0; i < n; ++i)
 		{
 			fprintf(stdout, "%d\t",b[i] );
+			if(b[i]==0)
+				n1++;
+			else n2++;
 			fflush(stdout);
 		}
 
-		fprintf(stdout, " \n Even %d\n",m1 );
+		fprintf(stdout, " \n Even %d\n",n2 );
 			fflush(stdout);
 
-			fprintf(stdout, "Odd %d\n",m2 );
+			fprintf(stdout, "Odd %d\n",n1 );
 			fflush(stdout);
 	}
 	// else
