@@ -7,11 +7,11 @@
 int main()
 {
 	int i,list_size;
-	printf("How many elements : \n");
+	printf("Enter number of elements \n");
 	scanf("%d",&list_size);
 
 	int *a =(int*) malloc (sizeof (int)* list_size);
-	printf("Enter %d elements: \n",list_size);
+	printf("Enter %d elements \n",list_size);
 	for(i=0;i<list_size;i++)
 	{
 		scanf("%d",&a[i]);
@@ -71,8 +71,17 @@ int main()
 
 	ret = clEnqueueReadBuffer(command_queue,c_mem_obj,CL_TRUE,0,list_size*sizeof(int),c,0,NULL,NULL);
 
-	for(i=0;i<list_size;i++)
-		printf("%5d's 1's complement  = %5d\n",a[i],c[i]);
+	for(i=0;i<list_size;i++){
+		int x = digits(a[i]);
+		int j[50];
+		swapi(j,x,c);
+		printf("1's compliment of %5d is %5d",a[i],c[i]);
+		for (int i = 0; i < x; ++i)
+		{
+			printf("%d",j[i] );
+		}
+		printf("\n");
+	}
 
 	ret = clFlush(command_queue);
 	ret = clReleaseKernel(kernel);
@@ -86,4 +95,27 @@ int main()
 	free(c);
 
 	return 0;
+}
+int digits(int a){
+	int temp=0,n;
+	n=a;
+	while(n!=0){
+		n=n/10;
+		temp++;
+	}
+	return temp;
+}
+void swapi(int *j[],int size,int c){
+	int n=0,temp=0;
+	for (int i = size-1; i >0 ; i--)
+	{
+		if(c!=0)
+		{
+			n=c%10;
+			j[i]=n;
+			c=c/10;
+		}
+		else
+			j[i]=0;
+	}
 }

@@ -7,11 +7,11 @@
 int main()
 {
 	int i,list_size;
-	printf("How many elements : \n");
+	printf("Enter number of elements\n");
 	scanf("%d",&list_size);
 
 	int *a =(int*) malloc (sizeof (int)* list_size);
-	printf("Enter %d elements: \n",list_size);
+	printf("Enter %d elements\n",list_size);
 	for(i=0;i<list_size;i++)
 	{
 		scanf("%d",&a[i]);
@@ -71,7 +71,7 @@ int main()
 	int *c = (int *)malloc(sizeof(int)*list_size);
 
 	ret = clEnqueueReadBuffer(command_queue,c_mem_obj,CL_TRUE,0,list_size*sizeof(int),c,0,NULL,NULL);
-	printf("Swapped Array  :	"); 
+	printf("new array is "); 
 	for(i=0;i<list_size;i++)
 		printf("%d\t",c[i]);
 	printf("\n");

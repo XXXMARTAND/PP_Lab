@@ -1,9 +1,9 @@
-__kernel void rptstr(__global char *A,__global char *B,int n,int len)
-{
-	int id = get_global_id(0);
-	int i;
-	for(i=id;i<(n*len);i+=len){
-		B[i]=A[id];
-	}
 
-}
+ __kernel void stringcopy(__global char*A,__global char*B,int n)
+ {
+ 	int id=get_global_id(0);
+ 	int j;
+ for( j=0;j<n;j++)
+ 	B[j+id*n]=A[j];
+
+ }

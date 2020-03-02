@@ -7,11 +7,11 @@
 int main()
 {
 	int i,list_size;
-	printf("How many elements : \n");
+	printf("Enter number of elements \n");
 	scanf("%d",&list_size);
 
 	int *a =(int*) malloc (sizeof (int)* list_size);
-	printf("Enter %d elements: \n",list_size);
+	printf("Enter %d elements \n",list_size);
 	for(i=0;i<list_size;i++)
 	{
 		scanf("%d",&a[i]);
@@ -72,7 +72,7 @@ int main()
 	ret = clEnqueueReadBuffer(command_queue,c_mem_obj,CL_TRUE,0,list_size*sizeof(int),c,0,NULL,NULL);
 
 	for(i=0;i<list_size;i++)
-		printf("%3d in decimal = %3d in octal\n",a[i],c[i]);
+		printf("Equivalent octal value of %3d is %3d\n",a[i],c[i]);
 
 	ret = clFlush(command_queue);
 	ret = clReleaseKernel(kernel);

@@ -1,18 +1,12 @@
-inline int convert(int decimalNumber)
+__kernel void selection_sort(__global int *A,__global int*B)
 {
-    int octalNumber = 0, i = 1;
-    while (decimalNumber != 0)
-    {
-        octalNumber += (decimalNumber % 8) * i;
-        decimalNumber /= 8;
-        i *= 10;
-    }
-    return octalNumber;
-}
+	int id=get_global_id(0);
+	int pos=0;
+	int i;
+	int n=get_global_size(0);
+	for(i=0;i<n;i++)
+		if(A[i]<A[id]||A[i]==A[id]&&i<id)
+		pos++;
+		B[pos]=A[id];
 
-__kernel void dec_to_oct(__global int* A,__global int* C)
-{
-	int id = get_global_id(0);
-    
-	
 }
